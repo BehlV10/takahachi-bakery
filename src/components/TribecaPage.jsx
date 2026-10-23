@@ -87,15 +87,26 @@ export default function TribecaPage({ onSwitchLocation }) {
               </p>
             </div>
           </div>
-          <a
-            href="https://www.takahachi.net/s/Today-SP-menu-Mon-070124-c4hl.pdf"
-            target="_blank"
-            rel="noreferrer"
-            className="px-4 py-2.5 rounded-xl bg-blue-900 hover:bg-blue-800 text-white text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5 whitespace-nowrap shadow-sm"
-          >
-            <span>View Today’s Specials PDF</span>
-            <ExternalLink size={12} />
-          </a>
+          <div className="flex items-center gap-2">
+            <a
+              href="https://www.takahachi.net/s/LUNCH-111325.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="px-4 py-2.5 rounded-xl bg-blue-900 hover:bg-blue-800 text-white text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5 whitespace-nowrap shadow-sm"
+            >
+              <span>Lunch Menu PDF</span>
+              <ExternalLink size={12} />
+            </a>
+            <a
+              href="https://www.takahachi.net/s/Drink-2026.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="px-4 py-2.5 rounded-xl bg-white hover:bg-bakery-sand text-bakery-charcoal border border-bakery-border text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5 whitespace-nowrap shadow-sm"
+            >
+              <span>Drinks & Sake PDF</span>
+              <ExternalLink size={12} />
+            </a>
+          </div>
         </div>
 
         {/* Menu Tabs */}

@@ -170,12 +170,12 @@ export default function Navbar({ activeLocation, onSelectLocation, onOpenOrderMo
             {activeLocation === 'tribeca' && (
               <>
                 <a
-                  href="https://www.takahachi.net/s/Today-SP-menu-Mon-070124-c4hl.pdf"
+                  href="https://www.takahachi.net/s/LUNCH-111325.pdf"
                   target="_blank"
                   rel="noreferrer"
                   className="px-3 py-2 text-xs font-semibold text-blue-900 hover:underline flex items-center gap-1"
                 >
-                  <span>Today’s Specials PDF</span>
+                  <span>Lunch Menu PDF</span>
                   <ExternalLink size={12} />
                 </a>
                 <a

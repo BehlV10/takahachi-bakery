@@ -1,8 +1,22 @@
 import React from 'react';
 import { X, Phone, ShoppingBag, ExternalLink, Sparkles, Bike, Calendar } from 'lucide-react';
 
-export default function OnlineOrderModal({ isOpen, onClose }) {
+export default function OnlineOrderModal({ isOpen, onClose, onSelectLocation }) {
   if (!isOpen) return null;
+
+  const handleOpenBuilder = (e) => {
+    e.preventDefault();
+    if (onSelectLocation) {
+      onSelectLocation('bakery');
+    }
+    onClose();
+    setTimeout(() => {
+      const el = document.getElementById('order-builder');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 150);
+  };
 
   return (
     <div
@@ -38,10 +52,10 @@ export default function OnlineOrderModal({ isOpen, onClose }) {
         {/* Options List */}
         <div className="space-y-3">
           {/* Option 1: Whole Cake Pre-Order Builder */}
-          <a
-            href="#order-builder"
-            onClick={onClose}
-            className="p-4 rounded-2xl border-2 border-bakery-azuki/40 hover:border-bakery-azuki bg-bakery-azuki/5 hover:bg-bakery-azuki/10 transition flex items-center justify-between group"
+          <button
+            type="button"
+            onClick={handleOpenBuilder}
+            className="w-full text-left p-4 rounded-2xl border-2 border-bakery-azuki/40 hover:border-bakery-azuki bg-bakery-azuki/5 hover:bg-bakery-azuki/10 transition flex items-center justify-between group"
           >
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-bakery-azuki text-white flex items-center justify-center shadow-sm">
@@ -57,7 +71,7 @@ export default function OnlineOrderModal({ isOpen, onClose }) {
               </div>
             </div>
             <span className="text-xs font-bold text-bakery-azuki">Configure →</span>
-          </a>
+          </button>
 
           {/* Option 2: Direct Phone Order */}
           <a
@@ -82,43 +96,65 @@ export default function OnlineOrderModal({ isOpen, onClose }) {
 
           {/* Delivery Partners */}
           <div className="pt-2">
-            <p className="text-[11px] font-bold uppercase tracking-wider text-bakery-muted mb-2 flex items-center gap-1">
-              <Bike size={13} /> Delivery Apps (Tribeca & Lower Manhattan):
-            </p>
-            <div className="grid grid-cols-3 gap-2 text-center text-xs">
+            <div className="flex items-center justify-between mb-2">
+              <p className="text-[11px] font-bold uppercase tracking-wider text-bakery-muted flex items-center gap-1">
+                <Bike size={13} /> Official Online Delivery Partners:
+              </p>
+              <span className="text-[10px] text-green-700 bg-green-50 px-2 py-0.5 rounded font-semibold border border-green-200">
+                Verified Live
+              </span>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3 text-center text-xs">
               <a
-                href="https://www.doordash.com/store/takahachi-bakery-new-york-64673/"
+                href="https://www.grubhub.com/restaurant/takahachi-bakery-new-york/2435773"
                 target="_blank"
                 rel="noreferrer"
-                className="p-3 rounded-xl border border-bakery-border hover:border-red-500 hover:bg-red-50/50 transition font-medium flex flex-col items-center gap-1"
+                className="p-3.5 rounded-2xl border-2 border-red-500/30 hover:border-red-500 bg-red-50/30 hover:bg-red-50 transition font-medium flex flex-col items-center gap-1 shadow-sm group"
               >
-                <span className="font-bold text-red-600">DoorDash</span>
-                <span className="text-[10px] text-bakery-muted">Delivery</span>
+                <span className="font-bold text-red-600 text-sm group-hover:scale-105 transition-transform">Grubhub</span>
+                <span className="text-[11px] text-bakery-muted">Official Store Menu →</span>
               </a>
+
               <a
-                href="https://www.ubereats.com/store/takahachi-bakery/B3yv30y0QyG8h6oNfVjMvw"
+                href="https://www.seamless.com/menu/takahachi-bakery-new-york/2435773"
                 target="_blank"
                 rel="noreferrer"
-                className="p-3 rounded-xl border border-bakery-border hover:border-green-600 hover:bg-green-50/50 transition font-medium flex flex-col items-center gap-1"
+                className="p-3.5 rounded-2xl border-2 border-orange-500/30 hover:border-orange-500 bg-orange-50/30 hover:bg-orange-50 transition font-medium flex flex-col items-center gap-1 shadow-sm group"
               >
-                <span className="font-bold text-green-700">UberEats</span>
-                <span className="text-[10px] text-bakery-muted">Delivery</span>
+                <span className="font-bold text-orange-600 text-sm group-hover:scale-105 transition-transform">Seamless</span>
+                <span className="text-[11px] text-bakery-muted">Official Store Menu →</span>
               </a>
-              <a
-                href="https://www.seamless.com/menu/takahachi-bakery-25-murray-st-new-york/291677"
-                target="_blank"
-                rel="noreferrer"
-                className="p-3 rounded-xl border border-bakery-border hover:border-orange-500 hover:bg-orange-50/50 transition font-medium flex flex-col items-center gap-1"
-              >
-                <span className="font-bold text-orange-600">Seamless</span>
-                <span className="text-[10px] text-bakery-muted">Grubhub</span>
-              </a>
+            </div>
+
+            {/* UberEats / DoorDash Note */}
+            <div className="mt-3 p-2.5 rounded-xl bg-bakery-sand/60 border border-bakery-border/60 text-[11px] text-bakery-muted flex items-center justify-between">
+              <span>Looking for UberEats or DoorDash?</span>
+              <div className="flex items-center gap-2">
+                <a
+                  href="https://www.ubereats.com/search?q=Takahachi+Bakery"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-semibold text-green-800 hover:underline"
+                >
+                  UberEats Search ↗
+                </a>
+                <span>•</span>
+                <a
+                  href="https://www.doordash.com/search/store/Takahachi%20Bakery/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-semibold text-red-700 hover:underline"
+                >
+                  DoorDash ↗
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Footer Note */}
-        <p className="text-center text-[11px] text-bakery-muted mt-6">
+        <p className="text-center text-[11px] text-bakery-muted mt-5">
           Pickup Address: 25 Murray St, New York, NY 10007
         </p>
       </div>

@@ -101,6 +101,7 @@ export default function App() {
       <OnlineOrderModal
         isOpen={isOrderModalOpen}
         onClose={() => setIsOrderModalOpen(false)}
+        onSelectLocation={handleSwitchLocation}
       />
     </div>
   );
