@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #FAF7F2;
+    color: #2D2926;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom scrollbar for menu & gallery */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F3EDE2;
+}
+::-webkit-scrollbar-thumb {
+  background: #D5C9B5;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4A5D44;
+}
+
+/* Japanese pattern overlay */
+.bg-subtle-linen {
+  background-image: radial-gradient(#D5C9B5 0.75px, transparent 0.75px);
+  background-size: 24px 24px;
+}
+
+.text-stroke-gold {
+  -webkit-text-stroke: 1px rgba(194, 124, 56, 0.3);
+}
