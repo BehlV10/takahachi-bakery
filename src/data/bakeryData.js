@@ -3,60 +3,138 @@ export const sisterLocations = [
     id: 'bakery',
     shortLabel: 'BAKERY',
     name: 'Takahachi Bakery',
-    subtitle: 'Japanese Patisserie, Artisan Breads & Café',
+    concept: 'Japanese Patisserie & Café',
+    tagline: 'Delicate Tokyo Pastry Craft & French Viennoiserie in Tribeca',
     address: '25 Murray St, New York, NY 10007',
     neighborhood: 'Tribeca / Lower Manhattan',
     phone: '212-791-5550',
     email: 'takahachibakery@gmail.com',
     hours: 'Monday – Friday: 8:30 AM – 6:00 PM',
     weekend: 'Saturday & Sunday: Closed',
+    priceRange: '$1.90 – $6.50 (Drinks/Breads) • $34 – $240 (Whole Cakes)',
     instagram: 'https://www.instagram.com/takahachibakery/',
     url: 'https://www.takahachi.net/takahachi-bakery',
     mapsUrl: 'https://maps.google.com/?q=Takahachi+Bakery+25+Murray+St+New+York+NY+10007',
     active: true,
-    tag: 'Current Site',
+    tag: 'Flagship Patisserie',
+    accentColor: '#4A5D44', // Matcha Green
     image: 'https://images.squarespace-cdn.com/content/v1/5bcc705ff4e5317e57cd7d81/1540127491651-KHKRI9AV0767MZGPDWWE/takahachi-bakery.jpg',
-    description: 'Fresh Japanese Shokupan, matcha whole cakes, mille crêpes, viennoiserie, and specialty Kyoto teas.'
+    description: 'Fresh Japanese Shokupan, matcha whole cakes, mille crêpes, viennoiserie, and specialty Kyoto teas.',
+    specialties: ['Kyoto Matcha Mousse', 'Japanese Strawberry Shortcake', 'Curry Pan', 'Matcha Mille Crêpe', 'Shokupan Milk Bread']
   },
   {
     id: 'tribeca',
     shortLabel: 'TRIBECA',
     name: 'Takahachi Tribeca',
-    subtitle: 'Authentic Japanese Dining, Sushi & Robata',
+    concept: 'Traditional Japanese Dining & Sushi Bar',
+    tagline: 'Fresh Seasonal Seafood, Artisan Rolls & Authentic Bento Boxes',
     address: '145 Duane St, New York, NY 10013',
     neighborhood: 'Tribeca, Manhattan',
     phone: '212-571-1830',
     email: 'info@takahachi.net',
-    hours: 'Lunch & Dinner Daily',
+    hours: 'Lunch: 12:00 PM – 2:30 PM • Dinner: 5:00 PM – 10:00 PM (Daily)',
+    priceRange: '$6.50 – $15 (Appetizers) • $18.50 – $26.50 (Lunch Boxes) • $22 – $45+ (Sushi & Entrees)',
     instagram: 'https://www.instagram.com/takahachitribeca/',
     url: 'https://www.takahachi.net/takahachi-tribeca',
     menuUrl: 'https://www.takahachi.net/s/Today-SP-menu-Mon-070124-c4hl.pdf',
     mapsUrl: 'https://maps.google.com/?q=Takahachi+Tribeca+145+Duane+St+New+York+NY+10013',
     active: false,
-    tag: 'Sister Restaurant',
+    tag: 'Classic Sushi & Dining',
+    accentColor: '#1A365D', // Deep Indigo / Ocean
     image: 'https://images.squarespace-cdn.com/content/v1/5bcc705ff4e5317e57cd7d81/1540127436981-0D0NGR0B2K9KMZUTD988/duane_front.jpg',
-    description: 'Renowned Tribeca Japanese restaurant serving premium nigiri sushi, sashimi, hot entrees, and daily specials.'
+    description: 'Renowned Tribeca Japanese restaurant serving premium nigiri sushi, sashimi, hot robata entrees, and daily specials.',
+    specialties: ['Toyosu Market Sashimi', 'Hamachi Carpaccio', 'Maki Boxes', 'Black Cod Miso', 'Eel Una Don']
   },
   {
     id: 'sa',
     shortLabel: 'SA (BROOKLYN)',
     name: 'Takahachi SA',
-    subtitle: 'Modern Izakaya, Small Plates & Artisanal Sake Bar',
+    concept: 'Modern Izakaya, Yakitori & Craft Sake Bar',
+    tagline: 'Inspired by the 53 Stations of the Historic Tokaido Highway',
     address: '29 Wyckoff Ave, Brooklyn, NY 11237',
     neighborhood: 'Bushwick, Brooklyn',
     phone: '929-607-4200',
     email: 'info@takahachi.net',
-    hours: 'Dinner & Late Night',
+    hours: 'Tuesday – Sunday: 5:00 PM – 11:30 PM (Closed Monday)',
+    priceRange: '$6 – $16 (Izakaya Plates) • $9 – $18 (Yakitori & Skewers) • $12 – $20 (Craft Sake & Cocktails)',
     instagram: 'https://www.instagram.com/takahachibrooklyn/',
     url: 'https://www.takahachi.net/takahachi-sa',
     mapsUrl: 'https://maps.google.com/?q=Takahachi+SA+29+Wyckoff+Ave+Brooklyn+NY+11237',
     active: false,
-    tag: 'Sister Izakaya',
+    tag: 'Brooklyn Izakaya',
+    accentColor: '#8C1D2F', // Tokaido Crimson / Sake
     image: 'https://images.squarespace-cdn.com/content/v1/5bcc705ff4e5317e57cd7d81/58675b8e-73d2-41a6-be23-52e2fac48436/0794ca17-6738-4b93-8a51-d07564ae7d49.png',
-    description: 'Brooklyn outpost featuring creative Japanese izakaya bites, yakitori, craft sake flights, and lively neighborhood atmosphere.'
+    description: 'Brooklyn outpost featuring creative Japanese izakaya bites, yakitori skewers, craft sake flights, and lively neighborhood atmosphere.',
+    specialties: ['Artisan Yakitori', 'Pork Belly Kakuni', 'Karaage Chicken', 'Curated Junmai Daiginjo Flights', 'Japanese Highballs']
   }
 ];
 
+// Tribeca Restaurant Menu Data
+export const tribecaMenuData = {
+  lunchBoxes: [
+    { name: 'Maki Box 1', price: '$24.50', desc: 'Chef selection of three specialty rolls, served with red or white miso soup, fresh house salad and two seasonal side dishes.' },
+    { name: 'Maki Box 2', price: '$26.50', desc: 'Premium roll trio with spicy tuna, salmon avocado, and yellowtail scallion, with miso soup and sides.' },
+    { name: 'Sushi Mixed Lunch', price: '$23.50', desc: 'Assorted fresh nigiri sushi (5 pcs) and California roll with seasonal sides and red miso.' },
+    { name: 'Sashimi Mixed Lunch', price: '$23.00', desc: 'Daily market sliced sashimi (9 pcs) with grated wasabi, nori, rice, and miso.' },
+    { name: 'Black Cod Mixed Box', price: '$24.50', desc: 'Saikyo miso-marinated broiled black cod fillet, steamed Japanese rice, salad, and sides.' },
+    { name: 'Salmon Mixed Box', price: '$21.50', desc: 'Grilled fresh Atlantic salmon with choice of teriyaki glaze or sea salt shioyaki.' },
+    { name: 'Tori Mixed Box', price: '$20.50', desc: 'Crispy fried chicken karaage or grilled teriyaki chicken thigh with Japanese potato salad.' },
+    { name: 'Chirashi Mixed Bowl', price: '$24.50', desc: 'Assorted seasonal sashimi beautifully scattered over seasoned sushi rice.' }
+  ],
+  appetizers: [
+    { name: 'Hamachi Carpaccio', price: '$15.00', desc: 'Thinly sliced yellowtail topped with jalapeño, yuzu ponzu sauce, and microgreens.' },
+    { name: 'Tri Sushi Appetizer', price: '$14.00', desc: 'Trio of signature tasting bites featuring tuna tartare, spicy salmon, and yellowtail.' },
+    { name: 'Summer Roll (GF / No Rice)', price: '$13.00', desc: 'Fresh tuna, salmon, crab, avocado and greens wrapped in delicate cucumber sheet.' },
+    { name: 'Tokyo Forest Salad', price: '$10.00', desc: 'Organic arugula, cherry tomatoes, sautéed shiitake, parmesan flakes, raspberry vinaigrette.' },
+    { name: 'Soba Salad', price: '$11.00', desc: 'Chilled buckwheat noodles, shiitake, avocado, daikon radish, harinori, roasted sesame dressing.' },
+    { name: 'Edamame', price: '$6.50', desc: 'Steamed organic young soybeans sprinkled with Japanese sea salt.' }
+  ],
+  sushiAndMaki: [
+    { name: 'Ocean 13 Special Big Maki', price: '$22.00', desc: 'Tuna, salmon, yellowtail, avocado, cucumber, flying fish roe, spicy mayo, wrapped in soy paper.' },
+    { name: 'Happy Together Roll', price: '$14.00', desc: 'Spicy crunchy tuna inside, topped with fresh avocado and tobiko.' },
+    { name: 'The Secret Garden Roll', price: '$12.00', desc: 'Tempura asparagus, sweet potato, avocado, and shiitake mushroom with sweet soy reduction.' },
+    { name: 'Deluxe Sushi Platter', price: '$34.00', desc: '9 pieces of chef’s daily selection nigiri sushi and one spicy tuna roll.' },
+    { name: 'Sashimi Moriawase', price: '$38.00', desc: '15 pieces of premium sliced sashimi including bluefin tuna, king salmon, and wild catch.' }
+  ],
+  donburiAndEntrees: [
+    { name: 'Una Don (Broiled Freshwater Eel)', price: '$23.50', desc: 'Glazed BBQ freshwater eel served over a warm bed of seasoned rice with sansho pepper.' },
+    { name: 'Ten Don (Tempura Bowl)', price: '$21.50', desc: 'Crispy tiger shrimp and assorted seasonal vegetable tempura over steamed rice with tensuyu.' },
+    { name: 'Yakiniku Don', price: '$21.50', desc: 'Thinly sliced marinated prime beef sautéed with onions in Japanese sweet garlic-soy sauce.' },
+    { name: 'Sake Tsuyayaki', price: '$22.00', desc: 'Broiled salmon served with savory seasonal vegetables and dashi miso broth.' }
+  ]
+};
+
+// Takahachi SA Brooklyn Izakaya Menu Data
+export const saMenuData = {
+  tokaidoStory: {
+    title: 'The "Service Area" on the Tokaido Road',
+    subtitle: 'Inspired by Utagawa Hiroshige’s 53 Stations of the Tokaido (1832)',
+    text: 'Built in 1603, the Tokaido was Japan\'s great coastal highway connecting Edo (Tokyo) to Kyoto. Along this route were 53 historic resting stations—the original "Service Areas" (SA)—where weary travelers, samurai, and poets would gather for warm comfort food, yakitori skewers, and chilled sake. Takahachi SA brings that historic spirit of warmth, conviviality, and unpretentious Japanese street fare to Bushwick, Brooklyn.'
+  },
+  izakayaPlates: [
+    { name: 'Pork Belly Kakuni', price: '$14.00', desc: 'Melt-in-your-mouth braised pork belly simmered for 8 hours in sweet soy, ginger, and dashi with soft-boiled ajitama egg.' },
+    { name: 'Japanese Karaage Chicken', price: '$11.50', desc: 'Crispy double-fried marinated chicken thighs with Japanese kewpie mayo and fresh lemon wedge.' },
+    { name: 'Takoyaki Balls (6 pcs)', price: '$10.00', desc: 'Street-style octopus dumplings topped with savory brown sauce, Japanese mayo, and dancing bonito flakes.' },
+    { name: 'Charred Shishito Peppers', price: '$9.00', desc: 'Blistered Japanese mild peppers tossed with toasted sesame oil, sea salt, and bonito.' },
+    { name: 'Agedashi Organic Tofu', price: '$9.50', desc: 'Lightly fried silken tofu in warm dashi broth with grated daikon radish and scallions.' },
+    { name: 'Okonomiyaki Japanese Pancake', price: '$14.50', desc: 'Savory cabbage pancake griddled with pork belly, scallions, pickled ginger, and aonori.' }
+  ],
+  yakitoriSkewers: [
+    { name: 'Negima (Chicken Thigh & Scallion)', price: '$8.50 / 2 skewers', desc: 'Tender chicken thigh alternating with charred scallions, brushed with tare sauce.' },
+    { name: 'Tsukune (Chicken Meatball)', price: '$9.50 / 2 skewers', desc: 'Handcrafted seasoned chicken meatballs served with raw egg yolk dipping sauce.' },
+    { name: 'Butabara (Crisp Pork Belly)', price: '$9.00 / 2 skewers', desc: 'Skewered heritage pork belly sprinkled with coarse sea salt and cracked pepper.' },
+    { name: 'Shiitake & King Oyster Mushroom', price: '$7.50 / 2 skewers', desc: 'Grilled forest mushrooms glazed with sweet soy butter.' }
+  ],
+  sakeAndDrinks: [
+    { name: 'Takahachi House Sake Flight', price: '$18.00', desc: 'Tasting of 3 curated sakes: Crisp Junmai, Aromatic Ginjo, and Velvety Nigori (unfiltered).' },
+    { name: 'Dassai 45 Junmai Daiginjo', price: '$16 glass / $48 carafe', desc: 'Renowned Yamaguchi brewery with notes of ripe melon, white peach, and pristine finish.' },
+    { name: 'Tokyo Highball', price: '$12.00', desc: 'Iwai Japanese whisky, super-carbonated soda water, hand-cut lemon twist.' },
+    { name: 'Yuzu Craft Chuhai', price: '$11.00', desc: 'Japanese shochu, freshly squeezed Kochi yuzu juice, sparkling soda.' },
+    { name: 'Sapporo Draft on Tap', price: '$7.00 / pint', desc: 'Crisp, clean Japanese lager served in frosted mugs.' }
+  ]
+};
+
+// Existing Cake Catalog for Takahachi Bakery
 export const cakeCatalog = [
   {
     id: 'kyoto-matcha',
@@ -79,7 +157,7 @@ export const cakeCatalog = [
     name: 'Cassis Noir',
     jpName: 'カシスノワール',
     category: 'mousse',
-    description: 'Vibrant French blackcurrant cassis mousse with dark chocolate ganache, crisp hazelnut praline feuiiletine base, and fresh berry glaze.',
+    description: 'Vibrant French blackcurrant cassis mousse with dark chocolate ganache, crisp hazelnut praline feuilletine base, and fresh berry glaze.',
     image: 'https://images.squarespace-cdn.com/content/v1/5bcc705ff4e5317e57cd7d81/1694625338479-ILV9ZXZRXFS99EA8ZMTL/IMG_0139.jpg',
     tag: 'Patisserie Signature',
     sizes: [

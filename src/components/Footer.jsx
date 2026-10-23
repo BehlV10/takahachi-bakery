@@ -3,7 +3,7 @@ import { sisterLocations } from '../data/bakeryData';
 import { MapPin, Phone, Mail, ExternalLink, Heart } from 'lucide-react';
 import { InstagramIcon, FacebookIcon } from './Icons';
 
-export default function Footer() {
+export default function Footer({ onSelectLocation }) {
   return (
     <footer className="bg-bakery-ink text-white pt-16 pb-12 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -14,21 +14,27 @@ export default function Footer() {
           {/* Col 1: Brand & Philosophy */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-bakery-matcha text-white flex items-center justify-center font-serif text-lg font-bold">
-                八
-              </div>
-              <div>
-                <span className="font-serif text-2xl font-bold tracking-wider text-white">
-                  TAKAHACHI <span className="font-light italic text-bakery-honey">Bakery</span>
-                </span>
-                <p className="text-[10px] tracking-widest uppercase text-white/50">
-                  Japanese Patisserie & Artisanal Café
-                </p>
-              </div>
+              <button
+                type="button"
+                onClick={() => onSelectLocation && onSelectLocation('portal')}
+                className="flex items-center gap-3 text-left group"
+              >
+                <div className="w-10 h-10 rounded-full bg-bakery-matcha text-white flex items-center justify-center font-serif text-lg font-bold group-hover:scale-105 transition">
+                  八
+                </div>
+                <div>
+                  <span className="font-serif text-2xl font-bold tracking-wider text-white">
+                    TAKAHACHI <span className="font-light italic text-bakery-honey">Group</span>
+                  </span>
+                  <p className="text-[10px] tracking-widest uppercase text-white/50">
+                    Artisanal Patisserie, Sushi Dining & Brooklyn Izakaya
+                  </p>
+                </div>
+              </button>
             </div>
 
             <p className="text-xs text-white/70 leading-relaxed max-w-sm">
-              Established in 2010 by Hiroyuki Takahashi and Executive Patissiere Naoko Mabuchi. Dedicated to delicate Japanese craftsmanship, French viennoiserie, and community joy in Tribeca, New York City.
+              Established in New York City by Hiroyuki Takahashi. Bringing dedication, Japanese ingredient integrity, and culinary warmth to Tribeca and Bushwick across three distinct concepts.
             </p>
 
             <div className="flex items-center gap-3 pt-2">
@@ -37,7 +43,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 className="w-9 h-9 rounded-full bg-white/10 hover:bg-bakery-azuki flex items-center justify-center text-white transition"
-                title="Instagram"
+                title="Bakery Instagram"
               >
                 <InstagramIcon size={16} />
               </a>
@@ -74,59 +80,70 @@ export default function Footer() {
           {/* Col 2: Navigation Links */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-widest text-bakery-honey">
-              Bakery Navigation
+              Destination Portals
             </h4>
             <ul className="space-y-2 text-xs text-white/70">
               <li>
-                <a href="#menu" className="hover:text-white transition">Menu & Drinks</a>
+                <button
+                  type="button"
+                  onClick={() => onSelectLocation && onSelectLocation('portal')}
+                  className="hover:text-white transition text-left"
+                >
+                  ● Front Page / All Concepts
+                </button>
               </li>
               <li>
-                <a href="#cakes" className="hover:text-white transition">Whole Cakes & Mousse</a>
+                <button
+                  type="button"
+                  onClick={() => onSelectLocation && onSelectLocation('bakery')}
+                  className="hover:text-white transition text-left"
+                >
+                  ● Takahachi Bakery (Tribeca)
+                </button>
               </li>
               <li>
-                <a href="#order-builder" className="hover:text-white transition text-bakery-honey">Custom Cake Pre-Order</a>
+                <button
+                  type="button"
+                  onClick={() => onSelectLocation && onSelectLocation('tribeca')}
+                  className="hover:text-white transition text-left"
+                >
+                  ● Takahachi Tribeca (Sushi & Dining)
+                </button>
               </li>
               <li>
-                <a href="#chef" className="hover:text-white transition">Chef Naoko Mabuchi</a>
-              </li>
-              <li>
-                <a href="#gallery" className="hover:text-white transition">Photo Gallery</a>
-              </li>
-              <li>
-                <a href="#reviews" className="hover:text-white transition">Press & Reviews</a>
-              </li>
-              <li>
-                <a href="#location" className="hover:text-white transition">Hours & Directions</a>
+                <button
+                  type="button"
+                  onClick={() => onSelectLocation && onSelectLocation('sa')}
+                  className="hover:text-white transition text-left"
+                >
+                  ● Takahachi SA (Brooklyn Izakaya)
+                </button>
               </li>
             </ul>
           </div>
 
-          {/* Col 3: The Takahachi Sister Locations */}
+          {/* Col 3: The Takahachi Sister Locations Cards */}
           <div className="lg:col-span-4 space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-widest text-bakery-honey">
               The Takahachi Trio
             </h4>
-            <div className="space-y-3 text-xs">
+            <div className="space-y-2.5 text-xs">
               {sisterLocations.map((loc) => (
-                <div key={loc.id} className="p-3 rounded-xl bg-white/5 border border-white/5">
+                <div
+                  key={loc.id}
+                  onClick={() => onSelectLocation && onSelectLocation(loc.id)}
+                  className="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 cursor-pointer transition"
+                >
                   <div className="flex items-center justify-between">
-                    <strong className="text-white text-xs">{loc.name}</strong>
-                    {loc.active ? (
-                      <span className="text-[10px] text-bakery-matchaLight font-semibold">Current Site</span>
-                    ) : (
-                      <a
-                        href={loc.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-[10px] text-bakery-honey hover:underline flex items-center gap-1"
-                      >
-                        <span>Visit Site</span>
-                        <ExternalLink size={10} />
-                      </a>
-                    )}
+                    <strong className="text-white text-xs hover:text-bakery-honey transition">
+                      {loc.name}
+                    </strong>
+                    <span className="text-[10px] text-bakery-honey font-bold">
+                      Open Page →
+                    </span>
                   </div>
-                  <p className="text-[11px] text-white/60 mt-0.5">{loc.address}</p>
-                  <p className="text-[11px] text-white/60">{loc.phone}</p>
+                  <p className="text-[11px] text-white/60 mt-0.5">{loc.concept}</p>
+                  <p className="text-[10px] text-white/40">{loc.address}</p>
                 </div>
               ))}
             </div>
@@ -136,10 +153,24 @@ export default function Footer() {
 
         {/* Bottom Copyright & Credits */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50">
-          <p>© {new Date().getFullYear()} Takahachi Bakery. All rights reserved.</p>
-          <p className="flex items-center gap-1">
-            <span>Crafted with Japanese care & modern web design</span>
-          </p>
+          <p>© {new Date().getFullYear()} Takahachi Group NYC. All rights reserved.</p>
+          <div className="flex items-center gap-3">
+            <button onClick={() => onSelectLocation && onSelectLocation('portal')} className="hover:underline">
+              All 3 Locations Portal
+            </button>
+            <span>•</span>
+            <button onClick={() => onSelectLocation && onSelectLocation('bakery')} className="hover:underline">
+              Bakery
+            </button>
+            <span>•</span>
+            <button onClick={() => onSelectLocation && onSelectLocation('tribeca')} className="hover:underline">
+              Tribeca Sushi
+            </button>
+            <span>•</span>
+            <button onClick={() => onSelectLocation && onSelectLocation('sa')} className="hover:underline">
+              SA Izakaya
+            </button>
+          </div>
         </div>
 
       </div>

@@ -3,7 +3,7 @@ import { sisterLocations } from '../data/bakeryData';
 import { ExternalLink, MapPin, Phone, CheckCircle2, FileText, Navigation } from 'lucide-react';
 import { InstagramIcon } from './Icons';
 
-export default function SisterLocationsBanner() {
+export default function SisterLocationsBanner({ onSelectLocation }) {
   return (
     <section className="py-16 bg-bakery-sand/70 border-y border-bakery-border relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -94,19 +94,19 @@ export default function SisterLocationsBanner() {
                 {/* Unified Card Action Buttons */}
                 <div className="pt-3 border-t border-bakery-border space-y-2">
                   <div className="flex items-center gap-2">
-                    <a
-                      href={loc.url}
-                      target={loc.active ? '_self' : '_blank'}
-                      rel="noreferrer"
-                      className={`flex-1 py-2 px-3 rounded-xl text-xs font-semibold text-center transition flex items-center justify-center gap-1.5 ${
-                        loc.active
-                          ? 'bg-bakery-matchaPale text-bakery-matcha border border-bakery-matchaLight/40'
-                          : 'bg-bakery-charcoal hover:bg-bakery-ink text-white shadow-sm'
-                      }`}
-                    >
-                      <span>{loc.active ? 'Viewing Bakery Site' : `Visit ${loc.shortLabel} Site`}</span>
-                      <ExternalLink size={12} />
-                    </a>
+                    {loc.active ? (
+                      <span className="flex-1 py-2 px-3 rounded-xl text-xs font-semibold text-center bg-bakery-matchaPale text-bakery-matcha border border-bakery-matchaLight/40 flex items-center justify-center gap-1.5">
+                        <span>Current Active Page</span>
+                      </span>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => onSelectLocation && onSelectLocation(loc.id)}
+                        className="flex-1 py-2 px-3 rounded-xl text-xs font-semibold text-center transition flex items-center justify-center gap-1.5 bg-bakery-charcoal hover:bg-bakery-ink text-white shadow-sm"
+                      >
+                        <span>Open {loc.shortLabel} Page →</span>
+                      </button>
+                    )}
 
                     <a
                       href={loc.mapsUrl}
