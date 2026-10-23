@@ -2,6 +2,8 @@
 
 A modern, high-craft web rebuild for **Takahachi Bakery** (25 Murray St, Tribeca, NYC) and the unified **Takahachi NYC Family** (Tribeca, SA Brooklyn, and Bakery), originally hosted on Squarespace.
 
+🌐 **Live Demo on GitHub Pages**: **[https://behlv10.github.io/takahachi-bakery/](https://behlv10.github.io/takahachi-bakery/)**
+
 Built with **React**, **Vite**, **Tailwind CSS**, and **Lucide Icons**.
 
 ---
