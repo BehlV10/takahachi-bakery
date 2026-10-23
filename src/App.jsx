@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import SisterLocationsBanner from './components/SisterLocationsBanner';
 import CakesSection from './components/CakesSection';
 import CakeOrderBuilder from './components/CakeOrderBuilder';
 import MenuSection from './components/MenuSection';
@@ -71,7 +70,6 @@ export default function App() {
               onSwitchLocation={handleSwitchLocation}
               onOpenOrderModal={() => setIsOrderModalOpen(true)}
             />
-            <SisterLocationsBanner onSelectLocation={handleSwitchLocation} />
             <CakesSection onSelectCakeForOrder={handleSelectCake} />
             <CakeOrderBuilder
               selectedCake={selectedCakeForOrder}
