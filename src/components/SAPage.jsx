@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { saMenuData } from '../data/bakeryData';
 import { Flame, Wine, Clock, MapPin, Phone, ArrowLeft, Navigation, Sparkles, ZoomIn, X } from 'lucide-react';
 import { InstagramIcon } from './Icons';
+import hiroshigeImg from '../assets/images/tokaido-mariko-hiroshige.jpg';
 
 export default function SAPage({ onSwitchLocation }) {
   const [activeTab, setActiveTab] = useState('izakaya');
-  const [isMapModalOpen, setIsMapModalOpen] = useState(false);
+  const [zoomImage, setZoomImage] = useState(null);
 
   const tabs = [
     { id: 'izakaya', label: 'Izakaya Small Plates ($9–$14.50)' },
@@ -104,7 +105,11 @@ export default function SAPage({ onSwitchLocation }) {
               <div className="absolute inset-0 bg-black/10 group-hover:bg-black/25 transition-colors flex items-center justify-center">
                 <button
                   type="button"
-                  onClick={() => setIsMapModalOpen(true)}
+                  onClick={() => setZoomImage({
+                    url: mapGraphicUrl,
+                    title: "Takahachi SA — Tokaido Road Highway Map Graphic",
+                    subtitle: "53 Historic Service Area Stations (1603–1832)"
+                  })}
                   className="px-4 py-2 rounded-xl bg-white/95 text-bakery-charcoal text-xs font-bold shadow-lg flex items-center gap-1.5 group-hover:scale-105 transition"
                 >
                   <ZoomIn size={14} className="text-red-700" />
@@ -118,7 +123,12 @@ export default function SAPage({ onSwitchLocation }) {
                 🗺️ <strong>Takahachi SA Tokaido Road Map Graphic</strong>: Tracing the route from Nihonbashi (Edo) to Sanjo Ohashi (Kyoto).
               </span>
               <button
-                onClick={() => setIsMapModalOpen(true)}
+                type="button"
+                onClick={() => setZoomImage({
+                  url: mapGraphicUrl,
+                  title: "Takahachi SA — Tokaido Road Highway Map Graphic",
+                  subtitle: "53 Historic Service Area Stations (1603–1832)"
+                })}
                 className="text-red-700 hover:text-red-800 font-bold underline flex items-center gap-1"
               >
                 <span>View High-Res Map</span>
@@ -143,16 +153,34 @@ export default function SAPage({ onSwitchLocation }) {
               </p>
             </div>
 
-            {/* Hiroshige Woodblock Card */}
-            <div className="md:col-span-4 rounded-2xl overflow-hidden border border-bakery-border bg-white shadow-soft p-3 space-y-2">
-              <img
-                src="https://images.squarespace-cdn.com/content/v1/5bcc705ff4e5317e57cd7d81/1693400317240-MZK1V4R728VKCBJYV4JT/Screen%2BShot%2B2023-08-16%2Bat%2B1.22.58%2BPM.jpg"
-                alt="Utagawa Hiroshige Tokaido 53 Stations Woodblock Print"
-                className="w-full h-auto rounded-lg object-cover"
-              />
-              <p className="text-[11px] text-bakery-muted text-center italic">
-                Hiroshige (1832) — Travelers resting at a Tokaido roadside inn
-              </p>
+            {/* Authentic Hiroshige Woodblock Card */}
+            <div
+              onClick={() => setZoomImage({
+                url: hiroshigeImg,
+                title: "Utagawa Hiroshige — The Fifty-Three Stations of the Tōkaidō",
+                subtitle: "Station 20: The Famous Teahouse at Mariko (c. 1833–1834) — Travelers resting at a roadside inn"
+              })}
+              className="md:col-span-4 rounded-2xl overflow-hidden border border-bakery-border bg-white shadow-soft p-3 space-y-2 cursor-pointer group hover:shadow-card hover:-translate-y-0.5 transition-all"
+            >
+              <div className="relative rounded-lg overflow-hidden bg-stone-100">
+                <img
+                  src={hiroshigeImg}
+                  alt="Utagawa Hiroshige — The Famous Teahouse at Mariko (Station 20, 53 Stations of the Tokaido)"
+                  className="w-full h-auto rounded-lg object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute top-2 right-2 px-2 py-1 rounded-md bg-black/60 backdrop-blur-md text-white text-[10px] font-bold flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <ZoomIn size={12} />
+                  <span>Inspect</span>
+                </div>
+              </div>
+              <div className="text-center space-y-0.5 pt-1">
+                <p className="text-xs font-bold text-bakery-ink">
+                  Utagawa Hiroshige (1833)
+                </p>
+                <p className="text-[11px] text-bakery-muted italic">
+                  Station 20: The Famous Teahouse at Mariko — travelers stopping for food & sake along the Tokaido
+                </p>
+              </div>
             </div>
           </div>
 
@@ -315,16 +343,16 @@ export default function SAPage({ onSwitchLocation }) {
 
       </div>
 
-      {/* Map Lightbox Modal */}
-      {isMapModalOpen && (
+      {/* Lightbox Modal (For Map or Hiroshige Print) */}
+      {zoomImage && (
         <div
           className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
-          onClick={() => setIsMapModalOpen(false)}
+          onClick={() => setZoomImage(null)}
         >
           <button
-            onClick={() => setIsMapModalOpen(false)}
+            onClick={() => setZoomImage(null)}
             className="absolute top-5 right-5 text-white/80 hover:text-white p-2.5 rounded-full bg-white/10 transition"
-            aria-label="Close Map View"
+            aria-label="Close View"
           >
             <X size={24} />
           </button>
@@ -334,18 +362,28 @@ export default function SAPage({ onSwitchLocation }) {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-4 bg-bakery-cream border-b border-bakery-border flex items-center justify-between">
-              <h3 className="font-serif text-lg font-bold text-bakery-ink">
-                Takahachi SA — Tokaido Road Highway Map Graphic
-              </h3>
-              <span className="text-xs text-bakery-muted">
-                53 Historic Service Area Stations (1603–1832)
-              </span>
+              <div>
+                <h3 className="font-serif text-lg font-bold text-bakery-ink">
+                  {zoomImage.title}
+                </h3>
+                {zoomImage.subtitle && (
+                  <p className="text-xs text-bakery-muted">
+                    {zoomImage.subtitle}
+                  </p>
+                )}
+              </div>
+              <button
+                onClick={() => setZoomImage(null)}
+                className="p-1 rounded-lg text-bakery-muted hover:text-bakery-charcoal"
+              >
+                <X size={18} />
+              </button>
             </div>
-            <div className="p-2 overflow-auto max-h-[75vh] flex items-center justify-center bg-stone-100">
+            <div className="p-3 overflow-auto max-h-[75vh] flex items-center justify-center bg-stone-100">
               <img
-                src={mapGraphicUrl}
-                alt="Full Resolution Tokaido Map Graphic"
-                className="max-w-full max-h-[75vh] object-contain"
+                src={zoomImage.url}
+                alt={zoomImage.title}
+                className="max-w-full max-h-[75vh] object-contain rounded-lg shadow-sm"
               />
             </div>
           </div>
