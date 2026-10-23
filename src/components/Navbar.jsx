@@ -3,44 +3,36 @@ import { sisterLocations } from '../data/bakeryData';
 import { MapPin, Phone, Clock, Menu as MenuIcon, X, ShoppingBag, ExternalLink, Sparkles, Home, Utensils, Flame, Croissant } from 'lucide-react';
 
 export default function Navbar({ activeLocation, onSelectLocation, onOpenOrderModal }) {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 15);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const navItems = [
-    { id: 'portal', label: 'All Concepts', icon: Home, short: 'Overview' },
-    { id: 'bakery', label: 'Tribeca Bakery', icon: Croissant, short: 'Japanese Patisserie' },
-    { id: 'tribeca', label: 'Tribeca Restaurant', icon: Utensils, short: 'Sushi & Dining' },
-    { id: 'sa', label: 'SA Brooklyn', icon: Flame, short: 'Izakaya & Sake' },
+    { id: 'portal', label: 'All Concepts', icon: Home },
+    { id: 'bakery', label: 'Tribeca Bakery', icon: Croissant },
+    { id: 'tribeca', label: 'Tribeca Restaurant', icon: Utensils },
+    { id: 'sa', label: 'SA Brooklyn', icon: Flame },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-      {/* Top Utility Bar */}
-      <div className="bg-bakery-ink text-white/80 text-[11px] py-1.5 px-4 border-b border-white/10 hidden sm:block">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <span className="text-bakery-honey uppercase tracking-widest text-[10px] font-bold flex items-center gap-1.5">
+    <header className="fixed top-0 left-0 right-0 z-50">
+      {/* Top Utility Bar (Fixed Height: 32px / h-8, never wraps, identical on all pages) */}
+      <div className="bg-bakery-ink text-white/80 text-[11px] h-8 px-4 border-b border-white/10 hidden sm:flex items-center">
+        <div className="max-w-7xl mx-auto w-full flex items-center justify-between gap-4">
+          
+          <div className="flex items-center gap-2.5 truncate">
+            <span className="text-bakery-honey uppercase tracking-widest text-[10px] font-bold flex items-center gap-1.5 flex-shrink-0">
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-bakery-honey"></span>
-              The Takahachi NYC Family
+              The Takahachi NYC Family:
             </span>
-            <span className="text-white/40">•</span>
-            <span className="text-white/70">
-              Bakery: 25 Murray St • Tribeca Sushi: 145 Duane St • SA Izakaya: 29 Wyckoff Ave Brooklyn
+            <span className="text-white/60 text-[11px] truncate">
+              Tribeca Bakery (25 Murray St) • Tribeca Sushi (145 Duane St) • SA Brooklyn (29 Wyckoff Ave)
             </span>
           </div>
 
-          <div className="flex items-center gap-4 text-white/70">
+          <div className="flex items-center gap-4 text-white/70 flex-shrink-0 text-right text-[11px]">
             {activeLocation === 'bakery' && (
               <>
                 <span>Mon–Fri: 8:30 AM – 6:00 PM</span>
+                <span className="text-white/30">•</span>
                 <a href="tel:2127915550" className="hover:text-white transition font-medium text-bakery-honey">
                   (212) 791-5550
                 </a>
@@ -49,6 +41,7 @@ export default function Navbar({ activeLocation, onSelectLocation, onOpenOrderMo
             {activeLocation === 'tribeca' && (
               <>
                 <span>Lunch & Dinner Daily</span>
+                <span className="text-white/30">•</span>
                 <a href="tel:2125711830" className="hover:text-white transition font-medium text-blue-300">
                   (212) 571-1830
                 </a>
@@ -57,41 +50,38 @@ export default function Navbar({ activeLocation, onSelectLocation, onOpenOrderMo
             {activeLocation === 'sa' && (
               <>
                 <span>Tue–Sun: 5:00 PM – 11:30 PM</span>
+                <span className="text-white/30">•</span>
                 <a href="tel:9296074200" className="hover:text-white transition font-medium text-red-300">
                   (929) 607-4200
                 </a>
               </>
             )}
             {activeLocation === 'portal' && (
-              <span className="text-bakery-honey font-medium">
-                Downtown Manhattan & Bushwick Brooklyn
-              </span>
+              <>
+                <span>Downtown Manhattan & Bushwick</span>
+                <span className="text-white/30">•</span>
+                <span className="text-bakery-honey font-medium">Est. 2010</span>
+              </>
             )}
           </div>
         </div>
       </div>
 
-      {/* Main Navigation Bar */}
-      <nav
-        className={`transition-all duration-300 border-b ${
-          isScrolled
-            ? 'bg-bakery-cream/95 backdrop-blur-md shadow-md py-2.5 border-bakery-border'
-            : 'bg-bakery-cream/90 backdrop-blur-sm py-3.5 border-bakery-border/70'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
+      {/* Main Navigation Bar (Fixed Constant Height: h-18 / 72px, rock-solid vertical alignment) */}
+      <nav className="bg-bakery-cream/95 backdrop-blur-md shadow-sm border-b border-bakery-border h-[72px] flex items-center">
+        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 flex items-center justify-between gap-4">
           
-          {/* Left: Brand Logo & Title */}
+          {/* Left: Brand Logo & Title (Fixed h-10 with perfect vertical centering) */}
           <button
             type="button"
             onClick={() => onSelectLocation('portal')}
-            className="flex items-center gap-3 text-left group flex-shrink-0"
+            className="flex items-center gap-3 text-left group flex-shrink-0 h-10"
           >
-            <div className="w-10 h-10 rounded-full bg-bakery-matcha text-white flex items-center justify-center font-serif text-lg font-bold shadow-sm transition group-hover:scale-105">
+            <div className="w-10 h-10 rounded-full bg-bakery-matcha text-white flex items-center justify-center font-serif text-lg font-bold shadow-sm transition group-hover:scale-105 flex-shrink-0">
               八
             </div>
-            <div>
-              <div className="font-serif text-xl sm:text-2xl font-bold tracking-wide text-bakery-charcoal flex items-center gap-1.5 leading-none">
+            <div className="flex flex-col justify-center">
+              <div className="font-serif text-xl sm:text-2xl font-bold tracking-wide text-bakery-charcoal flex items-center gap-1.5 leading-tight">
                 TAKAHACHI
                 <span className="font-light italic text-bakery-caramel text-lg sm:text-xl">
                   {activeLocation === 'bakery'
@@ -100,23 +90,23 @@ export default function Navbar({ activeLocation, onSelectLocation, onOpenOrderMo
                     ? 'Tribeca'
                     : activeLocation === 'sa'
                     ? 'SA'
-                    : 'NYC'}
+                    : 'Group'}
                 </span>
               </div>
-              <p className="text-[10px] tracking-widest uppercase text-bakery-muted font-medium mt-1">
+              <p className="text-[10px] tracking-widest uppercase text-bakery-muted font-medium truncate max-w-[220px]">
                 {activeLocation === 'bakery'
-                  ? 'Japanese Patisserie & Café'
+                  ? 'Japanese Patisserie & Café • Tribeca'
                   : activeLocation === 'tribeca'
-                  ? 'Traditional Sushi & Dining'
+                  ? 'Traditional Sushi & Dining • Tribeca'
                   : activeLocation === 'sa'
-                  ? 'Bushwick Izakaya & Sake Bar'
-                  : 'Artisanal Bakery & Japanese Restaurants'}
+                  ? 'Izakaya, Yakitori & Sake • Bushwick'
+                  : 'Japanese Restaurants & Bakery • NYC'}
               </p>
             </div>
           </button>
 
           {/* Center: Clean Segmented Location Pill Bar */}
-          <div className="hidden lg:flex items-center bg-bakery-sand/80 p-1 rounded-2xl border border-bakery-border shadow-inner">
+          <div className="hidden lg:flex items-center bg-bakery-sand/90 p-1 rounded-2xl border border-bakery-border shadow-inner">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = activeLocation === item.id;
@@ -152,8 +142,8 @@ export default function Navbar({ activeLocation, onSelectLocation, onOpenOrderMo
           </div>
 
           {/* Right: Quick Action Controls */}
-          <div className="hidden md:flex items-center gap-2.5 flex-shrink-0">
-            {activeLocation === 'bakery' ? (
+          <div className="hidden md:flex items-center gap-2.5 flex-shrink-0 h-10">
+            {activeLocation === 'bakery' && (
               <>
                 <a
                   href="#cakes"
@@ -175,7 +165,9 @@ export default function Navbar({ activeLocation, onSelectLocation, onOpenOrderMo
                   <span>Order Pickup</span>
                 </button>
               </>
-            ) : activeLocation === 'tribeca' ? (
+            )}
+
+            {activeLocation === 'tribeca' && (
               <>
                 <a
                   href="https://www.takahachi.net/s/Today-SP-menu-Mon-070124-c4hl.pdf"
@@ -194,7 +186,9 @@ export default function Navbar({ activeLocation, onSelectLocation, onOpenOrderMo
                   <span>Call (212) 571-1830</span>
                 </a>
               </>
-            ) : activeLocation === 'sa' ? (
+            )}
+
+            {activeLocation === 'sa' && (
               <>
                 <a
                   href="https://maps.google.com/?q=Takahachi+SA+29+Wyckoff+Ave+Brooklyn+NY+11237"
@@ -212,7 +206,9 @@ export default function Navbar({ activeLocation, onSelectLocation, onOpenOrderMo
                   <span>Call (929) 607-4200</span>
                 </a>
               </>
-            ) : (
+            )}
+
+            {activeLocation === 'portal' && (
               <button
                 onClick={() => onSelectLocation('bakery')}
                 className="px-4 py-2 text-xs font-bold rounded-xl bg-bakery-matcha text-white hover:bg-bakery-ink transition shadow-sm"
@@ -234,7 +230,7 @@ export default function Navbar({ activeLocation, onSelectLocation, onOpenOrderMo
 
         {/* Mobile Dropdown Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-white border-t border-bakery-border px-6 py-6 space-y-5 shadow-xl mt-2.5">
+          <div className="lg:hidden absolute top-[72px] left-0 right-0 bg-white border-b border-bakery-border px-6 py-6 space-y-5 shadow-2xl">
             <div className="space-y-2">
               <span className="text-[10px] font-bold uppercase tracking-wider text-bakery-muted block">
                 Select Destination:
@@ -269,13 +265,6 @@ export default function Navbar({ activeLocation, onSelectLocation, onOpenOrderMo
             {activeLocation === 'bakery' && (
               <div className="pt-2 border-t border-bakery-border flex flex-col space-y-2.5 font-medium text-sm text-bakery-charcoal">
                 <a
-                  href="#menu"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="py-1 hover:text-bakery-matcha"
-                >
-                  Menu & Drinks
-                </a>
-                <a
                   href="#cakes"
                   onClick={() => setMobileMenuOpen(false)}
                   className="py-1 hover:text-bakery-matcha"
@@ -288,6 +277,13 @@ export default function Navbar({ activeLocation, onSelectLocation, onOpenOrderMo
                   className="py-1 text-bakery-azuki font-semibold flex items-center gap-1.5"
                 >
                   <Sparkles size={14} /> Custom Cake Pre-Order
+                </a>
+                <a
+                  href="#menu"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="py-1 hover:text-bakery-matcha"
+                >
+                  Breads & Drinks Menu
                 </a>
                 <a
                   href="#chef"

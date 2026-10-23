@@ -6,7 +6,7 @@ export default function PortalHome({ onSelectLocation }) {
   return (
     <div className="pt-28 pb-20 bg-bakery-cream">
       {/* Brand Hero */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-6 pb-16 text-center space-y-4">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-16 text-center space-y-4">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-bakery-sand border border-bakery-border text-xs font-bold uppercase tracking-wider text-bakery-charcoal shadow-sm">
           <span>竹八 • NEW YORK CITY</span>
         </div>

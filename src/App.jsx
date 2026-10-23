@@ -38,7 +38,7 @@ export default function App() {
   const handleSwitchLocation = (locId) => {
     setActiveLocation(locId);
     window.location.hash = locId;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo(0, 0);
   };
 
   const handleSelectCake = (cake) => {
