@@ -1,7 +1,7 @@
 export const sisterLocations = [
   {
     id: 'bakery',
-    shortLabel: 'BAKERY',
+    shortLabel: 'TRIBECA BAKERY',
     name: 'Takahachi Bakery',
     concept: 'Japanese Patisserie & Café',
     tagline: 'Delicate Tokyo Pastry Craft & French Viennoiserie in Tribeca',
@@ -24,7 +24,7 @@ export const sisterLocations = [
   },
   {
     id: 'tribeca',
-    shortLabel: 'TRIBECA',
+    shortLabel: 'TRIBECA RESTAURANT',
     name: 'Takahachi Tribeca',
     concept: 'Traditional Japanese Dining & Sushi Bar',
     tagline: 'Fresh Seasonal Seafood, Artisan Rolls & Authentic Bento Boxes',
@@ -47,7 +47,7 @@ export const sisterLocations = [
   },
   {
     id: 'sa',
-    shortLabel: 'SA (BROOKLYN)',
+    shortLabel: 'SA BROOKLYN',
     name: 'Takahachi SA',
     concept: 'Modern Izakaya, Yakitori & Craft Sake Bar',
     tagline: 'Inspired by the 53 Stations of the Historic Tokaido Highway',

@@ -16,8 +16,8 @@ export default function Navbar({ activeLocation, onSelectLocation, onOpenOrderMo
 
   const navItems = [
     { id: 'portal', label: 'All Concepts', icon: Home, short: 'Overview' },
-    { id: 'bakery', label: 'Bakery', icon: Croissant, short: 'Tribeca Patisserie' },
-    { id: 'tribeca', label: 'Tribeca Sushi', icon: Utensils, short: 'Japanese Dining' },
+    { id: 'bakery', label: 'Tribeca Bakery', icon: Croissant, short: 'Japanese Patisserie' },
+    { id: 'tribeca', label: 'Tribeca Restaurant', icon: Utensils, short: 'Sushi & Dining' },
     { id: 'sa', label: 'SA Brooklyn', icon: Flame, short: 'Izakaya & Sake' },
   ];
 

@@ -67,7 +67,10 @@ export default function App() {
         {/* VIEW 2: Takahachi Bakery (Full Patisserie Experience) */}
         {activeLocation === 'bakery' && (
           <>
-            <Hero onOpenOrderModal={() => setIsOrderModalOpen(true)} />
+            <Hero
+              onSwitchLocation={handleSwitchLocation}
+              onOpenOrderModal={() => setIsOrderModalOpen(true)}
+            />
             <SisterLocationsBanner onSelectLocation={handleSwitchLocation} />
             <CakesSection onSelectCakeForOrder={handleSelectCake} />
             <CakeOrderBuilder
